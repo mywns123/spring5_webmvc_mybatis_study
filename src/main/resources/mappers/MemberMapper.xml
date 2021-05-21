@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring5_webmvc_mybatis_study.mapper.MemberMapper">
+
+	<resultMap type="Member" id="resMember">
+		<id property="id" column="id" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="registerDateTime" column="regdate" />
+	</resultMap>
+
+	<sql id="selectSql">
+		select id, email, password, name, regdate from `member`
+	</sql>
+
+	<select id="selectMemberByAll" parameterType="map" resultMap="resMember">
+		<include refid="selectSql" />		
+	</select>
+	
+</mapper>
