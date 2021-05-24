@@ -1,4 +1,4 @@
-package spring5_webmvc_mybatis_study.survey;
+package spring5_webmvc_mybatis_study.dto;
 
 import java.util.List;
 

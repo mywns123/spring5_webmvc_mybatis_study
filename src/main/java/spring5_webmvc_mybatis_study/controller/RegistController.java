@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import spring5_webmvc_mybatis_study.dto.RegisterRequest;
+import spring5_webmvc_mybatis_study.exception.DuplicateMemberException;
+import spring5_webmvc_mybatis_study.service.MemberRegisterService;
+
 @Controller
 public class RegistController {
 	@Autowired

@@ -1,23 +1,29 @@
-package spring5_webmvc_mybatis_study.controller;
+package spring5_webmvc_mybatis_study.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import spring5_webmvc_mybatis_study.dto.Member;
+import spring5_webmvc_mybatis_study.exception.MemberNotFoundException;
+import spring5_webmvc_mybatis_study.mappers.MemberMapper;
+
 @Component
+@Service
 public class ChangePasswordService {
 	
 	@Autowired
-	private MemberDao memberDao;
+	private MemberMapper mapperapper;
 
 	@Transactional
 	public void changePassword(String email, String oldPwd, String newPwd) {
-		Member member = memberDao.selectByEmail(email);
+		Member member = mapperapper.selectMemberByEmail(email);
 		if (member == null) {
 			throw new MemberNotFoundException();
 		}
 		member.changePassword(oldPwd, newPwd);
-		memberDao.update(member);
+		mapperapper.updateMember(member);
 	}
 
 }

@@ -1,6 +1,8 @@
-package spring5_webmvc_mybatis_study.controller;
+package spring5_webmvc_mybatis_study.dto;
 
 import java.time.LocalDateTime;
+
+import spring5_webmvc_mybatis_study.exception.WrongIdPasswordException;
 
 public class Member {
 	private long id;
@@ -8,6 +10,16 @@ public class Member {
 	private String password;
 	private String name;
 	private LocalDateTime registerDateTime;
+
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Member(String email, String password, String name) {
+		this.email = email;
+		this.password = password;
+		this.name = name;
+	}
 
 	public Member(String email, String password, String name, LocalDateTime registerDateTime) {
 		super();
@@ -61,6 +73,16 @@ public class Member {
 		if (!password.equals(oldPassword))
 			throw new WrongIdPasswordException();
 		this.password = newPassword;
+	}
+	
+	public boolean matchPassword(String password) {
+		return this.password.equals(password);		
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Member [id=%s, email=%s, password=%s, name=%s, registerDateTime=%s]", id, email, password,
+				name, registerDateTime);
 	}
 	
 }

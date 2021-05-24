@@ -1,10 +1,6 @@
 package spring5_webmvc_mybatis_study.mapper;
 
-import static org.junit.Assert.fail;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -18,11 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import spring5_webmvc_mybatis_study.config.ControllerConfig;
-import spring5_webmvc_mybatis_study.controller.Member;
+import spring5_webmvc_mybatis_study.config.ContextRoot;
+import spring5_webmvc_mybatis_study.dto.Member;
+import spring5_webmvc_mybatis_study.mappers.MemberMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ControllerConfig.class })
+@ContextConfiguration(classes = { ContextRoot.class })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MemberMapperTest {
 
@@ -37,29 +34,59 @@ public class MemberMapperTest {
 	}
 
 	@Test
-	public void testSelectMemberByAll() {
+	public void test01SelectMemberByAll() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-	
-		Map<String, Object> map = new HashMap<String, Object>();
-		List<Member> list = mapper.selectMemberByAll(map);
+			
+		List<Member> list = mapper.selectMemberByAll();
 		Assert.assertNotNull(list);
 		list.stream().forEach(s -> log.debug(s.toString()));
 	
 	}
+	
+	@Test
+	public void  test02selectMemberByEmail() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
-//	@Test
-	public void testInsertMember() {
-		fail("Not yet implemented");
+		String email = "test@test.co.kr";		
+		Member member = mapper.selectMemberByEmail(email);
+		log.debug(member.toString());		
+		Assert.assertNotNull(member);
+	}
+	
+	@Test
+	public void  test03countMember() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		int cnt = mapper.countMember();
+		Assert.assertNotEquals(-1, cnt);
+		log.debug("cnt >> " + cnt);	
+	}
+	
+	@Test
+	public void test04InsertMember() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	
+		Member member = new Member("test20@test.co.kr","1111","test20");
+		int res = mapper.insertMember(member);
+		Assert.assertEquals(1, res);		
 	}
 
-//	@Test
-	public void testUpdateMember() {
-		fail("Not yet implemented");
+	@Test
+	public void test05UpdateMember() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	
+		Member member = new Member("test20@test.co.kr","111111","테스트20");
+		int res = mapper.updateMember(member);
+		Assert.assertEquals(1, res);	
 	}
 
-//	@Test
-	public void testDeleteMember() {
-		fail("Not yet implemented");
+	@Test
+	public void test06DeleteMember() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	
+		Member member = new Member("test20@test.co.kr","111111","테스트20");
+		int res = mapper.deleteMember(member);
+		Assert.assertEquals(1, res);	
 	}
 
 }
