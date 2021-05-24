@@ -6,8 +6,10 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import({ContextDataSource.class, ContextSqlSession.class, MvcConfig.class  })
-@ComponentScan(basePackages = {"spring5_webmvc_mybatis_study.service",
-		"spring5_webmvc_mybatis_study.mappers"})
+@ComponentScan(basePackages = {
+		"spring5_webmvc_mybatis_study.service",
+		"spring5_webmvc_mybatis_study.mappers",
+		"spring5_webmvc_mybatis_study.controller"})
 public class ContextRoot {
 
 	

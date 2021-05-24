@@ -6,6 +6,11 @@ public class AuthInfo {
 	private String email;
 	private String name;
 
+	
+	public AuthInfo() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public AuthInfo(long id, String email, String name) {
 		this.id = id;
 		this.email = email;

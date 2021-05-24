@@ -9,7 +9,6 @@ import spring5_webmvc_mybatis_study.dto.Member;
 import spring5_webmvc_mybatis_study.exception.MemberNotFoundException;
 import spring5_webmvc_mybatis_study.mappers.MemberMapper;
 
-@Component
 @Service
 public class ChangePasswordService {
 	

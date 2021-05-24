@@ -7,6 +7,10 @@ public class Question {
 	private String title;
 	private List<String> options;
 
+	public Question() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Question(String title) {
 		this.title = title;
 	}
