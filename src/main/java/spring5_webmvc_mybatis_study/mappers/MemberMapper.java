@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import spring5_webmvc_mybatis_study.dto.ListCommand;
 import spring5_webmvc_mybatis_study.dto.Member;
 
 @Component
@@ -21,4 +22,5 @@ public interface MemberMapper {
 	
 	int deleteMember(Member member);
 	
+	List<Member> selectByRegdate(ListCommand listCommand);
 }

@@ -18,6 +18,18 @@
 		<include refid="selectSql" />		
 	</select>
 	
+<!-- 	<select id="selectByRegdate" resultMap="resMember" parameterType="">
+		<include refid="selectSql" />	
+		 where regdate between #{from} and #{to}
+		 order by regdate desc
+	</select> -->
+	
+	<select id="selectByRegdate" resultMap="resMember" >
+		<include refid="selectSql" />	
+		 where regdate between #{param1} and #{param2}
+		 order by regdate desc
+	</select>
+	
 	<select id="selectMemberByEmail" resultMap="resMember">
 		<include refid="selectSql" />
 		where email = #{email}	
