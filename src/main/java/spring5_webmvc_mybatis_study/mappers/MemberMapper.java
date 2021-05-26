@@ -14,7 +14,7 @@ public interface MemberMapper {
 	
 	Member selectMemberByEmail(String email);
 	
-	public Member selectbyId(long memId);
+	Member selectbyId(long memId);
 	
 	int countMember();
 	

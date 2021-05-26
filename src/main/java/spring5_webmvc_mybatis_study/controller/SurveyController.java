@@ -17,13 +17,6 @@ import spring5_webmvc_mybatis_study.dto.Question;
 @RequestMapping("/survey")
 public class SurveyController {
 
-//	@GetMapping
-//	public String form(Model model) {
-//		List<Question> questions = createQuestion();
-//		model.addAttribute("questions", questions);
-//		return "survey/surveyForm";
-//	}
-
 	@GetMapping
 	public ModelAndView form() {
 		List<Question> questions = createQuestion();
